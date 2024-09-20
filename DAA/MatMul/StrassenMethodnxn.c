@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int** createMat(int size){
-    int** mat = (int**)malloc(size * sizeof(int*));
+int **createMat(int size){
+    int **mat = (int**)malloc(size * sizeof(int*));
     for (int i = 0; i < size; i++) {
         mat[i] = (int*)malloc(size * sizeof(int));
     }
     return mat;
 }
 
-void freeMat(int** matrix, int size) {
+void freeMat(int **matrix, int size) {
     for (int i = 0; i < size; i++) {
         free(matrix[i]);
     }
     free(matrix);
 }
 
-void addMat(int** A, int** B, int** C, int size) {
+void addMat(int **A, int **B, int **C, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             C[i][j] = A[i][j] + B[i][j];
@@ -24,7 +24,7 @@ void addMat(int** A, int** B, int** C, int size) {
     }
 }
 
-void subMat(int** A, int** B, int** C, int size) {
+void subMat(int **A, int **B, int **C, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             C[i][j] = A[i][j] - B[i][j];
@@ -32,33 +32,33 @@ void subMat(int** A, int** B, int** C, int size) {
     }
 }
 
-void matMul(int** A, int** B, int** C, int size){
+void matMul(int **A, int **B, int **C, int size){
     if (size == 1) {
         C[0][0] = A[0][0] * B[0][0];
         return;
     }
 
     int newSize = size / 2;
-    int** A11 = createMat(newSize);
-    int** A12 = createMat(newSize);
-    int** A21 = createMat(newSize);
-    int** A22 = createMat(newSize);
+    int **A11 = createMat(newSize);
+    int **A12 = createMat(newSize);
+    int **A21 = createMat(newSize);
+    int **A22 = createMat(newSize);
 
-    int** B11 = createMat(newSize);
-    int** B12 = createMat(newSize);
-    int** B21 = createMat(newSize);
-    int** B22 = createMat(newSize);
+    int **B11 = createMat(newSize);
+    int **B12 = createMat(newSize);
+    int **B21 = createMat(newSize);
+    int **B22 = createMat(newSize);
 
-    int** M1 = createMat(newSize);
-    int** M2 = createMat(newSize);
-    int** M3 = createMat(newSize);
-    int** M4 = createMat(newSize);
-    int** M5 = createMat(newSize);
-    int** M6 = createMat(newSize);
-    int** M7 = createMat(newSize);
+    int **M1 = createMat(newSize);
+    int **M2 = createMat(newSize);
+    int **M3 = createMat(newSize);
+    int **M4 = createMat(newSize);
+    int **M5 = createMat(newSize);
+    int **M6 = createMat(newSize);
+    int **M7 = createMat(newSize);
 
-    int** temp1 = createMat(newSize);
-    int** temp2 = createMat(newSize);
+    int **temp1 = createMat(newSize);
+    int **temp2 = createMat(newSize);
 
     for (int i = 0; i < newSize; i++) {
         for (int j = 0; j < newSize; j++) {
@@ -127,7 +127,7 @@ void matMul(int** A, int** B, int** C, int size){
 
 }
 
-void printMatrix(int** matrix, int size) {
+void printMatrix(int **matrix, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             printf("%d ", matrix[i][j]);
@@ -141,7 +141,7 @@ int main() {
     printf("Enter matrix size (must be a power of 2): ");
     scanf("%d", &size);
 
-    int** A = createMat(size), **B = createMat(size), **C = createMat(size);
+    int **A = createMat(size), **B = createMat(size), **C = createMat(size);
 
     printf("Enter elements of matrix A:\n");
     for (int i = 0; i < size; i++) {
