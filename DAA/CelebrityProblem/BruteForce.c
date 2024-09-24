@@ -10,6 +10,13 @@ int **createMat(int size){
     return mat;
 }
 
+void freeMat(int **matrix, int size) {
+    for (int i = 0; i < size; i++) {
+        free(matrix[i]);
+    }
+    free(matrix);
+}
+
 int findCelebrity(int** Mat, int n){
     int celebrtiy = -1;
     for (int i = 0; i<n; i++){
@@ -53,5 +60,6 @@ int main(){
         }
     }
     printf("%d\n",findCelebrity(mat, size));
+    free(mat);
     return 0;
 }
